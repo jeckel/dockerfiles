@@ -1,4 +1,5 @@
 [![](https://images.microbadger.com/badges/image/jeckel/composer.svg)](https://microbadger.com/images/jeckel/composer "Get your own image badge on microbadger.com")
+
 [![](https://images.microbadger.com/badges/version/jeckel/composer.svg)](https://microbadger.com/images/jeckel/composer "Get your own version badge on microbadger.com")
 
 ## jeckel/composer
@@ -26,7 +27,7 @@ docker run -v `pwd`:/project --rm -it composer [command] [options]
 ```
 
 
-For exemple :
+For example :
 * to initialize your composer project :
 ```bash
 docker run -v `pwd`:/project --rm -it composer init
@@ -36,8 +37,8 @@ docker run -v `pwd`:/project --rm -it composer init
 docker run -v `pwd`:/project --rm -it composer install
 ```
 
-### Note :
-As composer is running in a dedicated composer, it cannot perform platform requirements. Then it is recommanded o use the option `--ignore-platform-reqs` when executing `install` or `update` commands :
+### Restriction :
+As composer is running in a dedicated container, it cannot perform platform requirements. Then it is recommanded o use the option `--ignore-platform-reqs` when executing `install` or `update` commands :
 
 ```bash
 docker run -v `pwd`:/project --rm -it composer install --ignore-platform-reqs
