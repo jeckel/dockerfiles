@@ -1,3 +1,6 @@
+[![](https://images.microbadger.com/badges/image/jeckel/composer.svg)](https://microbadger.com/images/jeckel/composer "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/jeckel/composer.svg)](https://microbadger.com/images/jeckel/composer "Get your own version badge on microbadger.com")
+
 ## jeckel/composer
 
 ![Composer](https://getcomposer.org/img/logo-composer-transparent5.png)
@@ -29,7 +32,6 @@ For exemple :
 docker run -v `pwd`:/project --rm -it composer init
 ```
 * to install or update you dependencies :
-
 ```bash
 docker run -v `pwd`:/project --rm -it composer install
 ```
