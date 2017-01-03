@@ -2,6 +2,7 @@ FROM php:7.0-cli
 MAINTAINER Jeckel <jeckel@jeckel.fr>
 
 ENV DEBIAN_FRONTEND noninteractive
+ENV COMPOSER_HOME /composer-cache-dir
 
 RUN apt-get update && \
     apt-get install -y git unzip sudo && \
@@ -16,11 +17,11 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 COPY composer.sh /usr/local/bin/composer.sh
 RUN chmod +x /usr/local/bin/composer.sh
 
-RUN mkdir /composer-cache-dir
-ENV COMPOSER_HOME=/composer-cache-dir
+RUN if [ ! -e $COMPOER_HOME ]; then \
+    mkdir $COMPOSER_HOME ; \
+    fi
 
 VOLUME /project
 WORKDIR /project
 
-#ENTRYPOINT ["composer.sh", "--ansi", "--cache-dir=/composer-cache-dir"]
 ENTRYPOINT ["composer.sh", "--ansi"]
