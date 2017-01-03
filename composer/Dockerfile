@@ -16,7 +16,11 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 COPY composer.sh /usr/local/bin/composer.sh
 RUN chmod +x /usr/local/bin/composer.sh
 
+RUN mkdir /composer-cache-dir
+ENV COMPOSER_HOME=/composer-cache-dir
+
 VOLUME /project
 WORKDIR /project
 
+#ENTRYPOINT ["composer.sh", "--ansi", "--cache-dir=/composer-cache-dir"]
 ENTRYPOINT ["composer.sh", "--ansi"]
