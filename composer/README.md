@@ -21,25 +21,25 @@ Your local project needs to be mounted on the `/project` folder
 You can use all composer's options and command at the end of this command line :
 
 ```bash
-docker run -v `pwd`:/project --rm -it composer [command] [options]
+docker run -v `pwd`:/project --rm -it jeckel/composer [command] [options]
 ```
 
 
 For example :
 * to initialize your composer project :
 ```bash
-docker run -v `pwd`:/project --rm -it composer init
+docker run -v `pwd`:/project --rm -it jeckel/composer init
 ```
 * to install or update you dependencies :
 ```bash
-docker run -v `pwd`:/project --rm -it composer install
+docker run -v `pwd`:/project --rm -it jeckel/composer install
 ```
 
 ### Restriction :
 As composer is running in a dedicated container, it cannot perform platform requirements. Then it is recommanded o use the option `--ignore-platform-reqs` when executing `install` or `update` commands :
 
 ```bash
-docker run -v `pwd`:/project --rm -it composer install --ignore-platform-reqs
+docker run -v `pwd`:/project --rm -it jeckel/composer install --ignore-platform-reqs
 ```
 
 ## Docker-compose
@@ -53,4 +53,13 @@ services:
     image: jeckel/composer
     volumes:
       - .:/project
+```
+
+## Add shell alias
+
+Create shell alias
+
+```bash
+$ echo "alias composer='docker run --rm -it -v \$(pwd):/project jeckel/composer'" >> ~/.bashrc
+$ source ~/.bashrc
 ```
