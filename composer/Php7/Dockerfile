@@ -1,4 +1,4 @@
-FROM php:7.0-cli
+FROM php:7-cli
 MAINTAINER Jeckel <jeckel@jeckel.fr>
 
 ENV DEBIAN_FRONTEND noninteractive
