@@ -5,8 +5,8 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV COMPOSER_HOME /composer-cache-dir
 
 RUN apt-get update && \
-    apt-get install -y git unzip sudo && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get install --no-install-recommends -y git unzip sudo && \
+    apt-get clean && rm -rf /var/{lib,cache}/apt
 
 # Installing composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
