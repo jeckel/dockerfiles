@@ -10,12 +10,13 @@ Please visit website : https://getcomposer.org/
 
 ## Supported tags and respective `Dockerfile` links
 
-* `Php7`, `latest` (*[Dockerfile](https://github.com/jeckel/dockerfiles/blob/master/composer/Php7/Dockerfile)*)
+* `Alpine-php7`, `latest` (*[Dockerfile](https://github.com/jeckel/dockerfiles/blob/master/composer/Alpine-php7/Dockerfile)*)
 * `Alpine-php5` (*[Dockerfile](https://github.com/jeckel/dockerfiles/blob/master/composer/Alpine-php5/Dockerfile)*)
+* `Php7` (*[Dockerfile](https://github.com/jeckel/dockerfiles/blob/master/composer/Php7/Dockerfile)*)
 
 The **Php7** version is based on the official [`php:7-cli`](https://hub.docker.com/_/php/) container and is mutch more larger (around 165 MB)
 
-The **Alpine-php5** version is based on Alpine, and as alpine doesn't support `php7-cli` for now, it's based on `php5` and is much smaller (around 18 MB) 
+The **Alpine-Php[x]** version is based on Alpine and is much smaller (around 18 MB) 
 
 ## Volumes
 Your local project needs to be mounted on the `/project` folder
@@ -29,7 +30,7 @@ docker run -v `pwd`:/project --rm -it jeckel/composer [command] [options]
 ```
 Or, for the alpine version :
 ```bash
-docker run -v `pwd`:/project --rm -it jeckel/composer:Alpine-php5 [command] [options]
+docker run -v `pwd`:/project --rm -it jeckel/composer [command] [options]
 ```
 
 
