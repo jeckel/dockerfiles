@@ -8,10 +8,14 @@ Composer is a tool for dependency management in PHP. It allows you to declare th
  
 Please visit website : https://getcomposer.org/
 
-## Features
+## Supported tags and respective `Dockerfile` links
 
-* Based on php7.0-cli
-* Use latest version of composer
+* `Php7`, `latest` (*[Dockerfile](https://github.com/jeckel/dockerfiles/blob/master/composer/Php7/Dockerfile)*)
+* `Alpine-php5` (*[Dockerfile](https://github.com/jeckel/dockerfiles/blob/master/composer/Alpine-php5/Dockerfile)*)
+
+The **Php7** version is based on the official [`php:7-cli`](https://hub.docker.com/_/php/) container and is mutch more larger (around 165 MB)
+
+The **Alpine-php5** version is based on Alpine, and as alpine doesn't support `php7-cli` for now, it's based on `php5` and is much smaller (around 18 MB) 
 
 ## Volumes
 Your local project needs to be mounted on the `/project` folder
@@ -21,25 +25,29 @@ Your local project needs to be mounted on the `/project` folder
 You can use all composer's options and command at the end of this command line :
 
 ```bash
-docker run -v `pwd`:/project --rm -it composer [command] [options]
+docker run -v `pwd`:/project --rm -it jeckel/composer [command] [options]
+```
+Or, for the alpine version :
+```bash
+docker run -v `pwd`:/project --rm -it jeckel/composer:Alpine-php5 [command] [options]
 ```
 
 
 For example :
 * to initialize your composer project :
 ```bash
-docker run -v `pwd`:/project --rm -it composer init
+docker run -v `pwd`:/project --rm -it jeckel/composer init
 ```
 * to install or update you dependencies :
 ```bash
-docker run -v `pwd`:/project --rm -it composer install
+docker run -v `pwd`:/project --rm -it jeckel/composer install
 ```
 
 ### Restriction :
 As composer is running in a dedicated container, it cannot perform platform requirements. Then it is recommanded o use the option `--ignore-platform-reqs` when executing `install` or `update` commands :
 
 ```bash
-docker run -v `pwd`:/project --rm -it composer install --ignore-platform-reqs
+docker run -v `pwd`:/project --rm -it jeckel/composer install --ignore-platform-reqs
 ```
 
 ## Docker-compose
@@ -50,7 +58,16 @@ Exemple of docker-compose configuration :
 version: '2'
 services:
   composer:
-    image: jeckel/composer
+    image: jeckel/composer:Alpine-php5
     volumes:
       - .:/project
+```
+
+## Add shell alias
+
+Create shell alias
+
+```bash
+$ echo "alias composer='docker run --rm -it -v \$(pwd):/project jeckel/composer'" >> ~/.bashrc
+$ source ~/.bashrc
 ```
