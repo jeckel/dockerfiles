@@ -8,4 +8,7 @@ RUN apt-get update && \
 COPY codecept.sh /usr/local/bin/codecept.sh
 RUN chmod +x /usr/local/bin/codecept.sh
 
+VOLUME /project
+WORKDIR /project
+
 ENTRYPOINT ["codecept.sh"]
