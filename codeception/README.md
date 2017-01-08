@@ -2,6 +2,8 @@
 
 ## Jeckel/Codeception
 
+![Codeception](http://chilion.nl/wp-content/uploads/2016/06/codeception.png)
+
 This image is proposing codeception running with the mounted local user. It avoid generating file under the root user.
 
 It's based on the official [Codeception](https://hub.docker.com/r/codeception/codeception/) image
