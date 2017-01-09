@@ -1,4 +1,4 @@
-[![Twitter](https://img.shields.io/badge/Twitter-%40jeckel4-blue.svg)](https://twitter.com/intent/user?screen_name=jeckel4)
+[![](https://images.microbadger.com/badges/image/jeckel/phpanalysis.svg)](https://microbadger.com/images/jeckel/phpanalysis "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/jeckel/phpanalysis.svg)](https://microbadger.com/images/jeckel/phpanalysis "Get your own version badge on microbadger.com") [![Twitter](https://img.shields.io/badge/Twitter-%40jeckel4-blue.svg)](https://twitter.com/intent/user?screen_name=jeckel4)
 
 # PHP Analysis
 
