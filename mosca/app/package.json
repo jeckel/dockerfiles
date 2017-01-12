@@ -1,0 +1,10 @@
+{
+  "name": "iotapi",
+  "description": "IOTAPI",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "mqtt": "",
+    "mosca": ""
+  }
+}
