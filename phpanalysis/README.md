@@ -8,7 +8,7 @@ This container include the followig tools :
 * [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)
 
 Planned tools :
-* PHPCPD
+* PHPLOC
 * PHPMD
 * ...
 
