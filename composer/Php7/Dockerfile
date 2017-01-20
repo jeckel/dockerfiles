@@ -17,7 +17,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 COPY composer.sh /usr/local/bin/composer.sh
 RUN chmod +x /usr/local/bin/composer.sh
 
-RUN if [ ! -e $COMPOER_HOME ]; then \
+RUN if [ ! -e $COMPOSER_HOME ]; then \
     mkdir $COMPOSER_HOME ; \
     fi
 
