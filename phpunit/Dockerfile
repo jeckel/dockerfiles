@@ -16,6 +16,9 @@ RUN chmod +rx /usr/local/bin/launcher.sh \
 
 #RUN ln -s /usr/bin/php7 /usr/bin/php
 
+# Cleanup
+RUN rm -Rf /var/{cache,lib}/apk /etc/apk/cache
+
 VOLUME /project
 WORKDIR /project
 
