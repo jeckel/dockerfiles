@@ -51,6 +51,25 @@ As composer is running in a dedicated container, it cannot perform platform requ
 docker run -v `pwd`:/project --rm -it jeckel/composer install --ignore-platform-reqs
 ```
 
+### Enable composer cache
+
+To use the docker cache, you need to mount a volume on `/composer` like this :
+
+```bash
+$ docker run -v `pwd`:/project \
+        -v /tmp/composer:/composer \
+        --rm --it jeckel/composer install
+```
+
+You can also use a previously create docker volume :
+```bash
+$ docker volume create --name composer_volume
+$ docker run -v `pwd`:/project \
+        -v composer_volume:/composer \
+        --rm --it jeckel/composer install
+
+```
+
 ## Docker-compose
 
 Exemple of docker-compose configuration :
@@ -62,6 +81,7 @@ services:
     image: jeckel/composer:Alpine-php5
     volumes:
       - .:/project
+      - composer_home:/composer
 ```
 
 ## Add shell alias

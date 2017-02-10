@@ -1,7 +1,7 @@
 FROM alpine:latest
 MAINTAINER Jeckel <jeckel@jeckel.fr>
 
-ENV COMPOSER_HOME /composer-cache-dir
+ENV COMPOSER_HOME /composer
 
 RUN	apk update && \
     apk upgrade && \
@@ -28,6 +28,9 @@ RUN chmod +x /usr/local/bin/composer.sh
 RUN if [ ! -e $COMPOSER_HOME ]; then \
     mkdir $COMPOSER_HOME ; \
     fi
+
+# CLeanup
+RUN rm -Rf /var/{cache,lib}/apk /etc/apk/cache
 
 VOLUME /project
 WORKDIR /project

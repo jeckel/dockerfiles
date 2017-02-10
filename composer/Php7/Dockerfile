@@ -2,7 +2,7 @@ FROM php:7-cli
 MAINTAINER Jeckel <jeckel@jeckel.fr>
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV COMPOSER_HOME /composer-cache-dir
+ENV COMPOSER_HOME /composer
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y git unzip sudo && \
@@ -20,6 +20,11 @@ RUN chmod +x /usr/local/bin/composer.sh
 RUN if [ ! -e $COMPOSER_HOME ]; then \
     mkdir $COMPOSER_HOME ; \
     fi
+
+# CLeanup
+RUN apt-get clean autoclean && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/{apt,dpkg} /tmp/* /var/{tmp,cache,log}/*
 
 VOLUME /project
 WORKDIR /project
