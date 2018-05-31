@@ -42,8 +42,6 @@ function cleanup() {
     local backupMask=${targetDir}/backup_$(basename ${src})_*.tar.gz
     local keepHistory=$3
 
-    local target=$2/backup_$(basename ${src})_$(date +"%Y%m%d%H%M%S").tar.gz
-
     # Keep only the last "$keepHistory" backups
     ls -1dr ${backupMask} | tail -n +$((keepHistory + 1)) | xargs rm -rf
 }

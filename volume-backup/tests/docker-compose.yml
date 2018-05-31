@@ -1,12 +1,12 @@
 version: "3"
 
-volumes:
-  source:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '${PWD}/..'
+#volumes:
+#  source:
+#    driver: local
+#    driver_opts:
+#      type: 'none'
+#      o: 'bind'
+#      device: '${PWD}/..'
 
 
 # Declare services
@@ -18,8 +18,8 @@ services:
 #      dockerfile: Dockerfile
     volumes:
       - ./backups:/var/backups
-      - source:/var/source
-      - source:/var/tmp
+      - ../:/var/source
+      - ../:/var/tmp
     environment:
       - TARGET_DIRECTORY=/var/backups
       - SOURCE_DIRECTORIES=/var/source /var/tmp
