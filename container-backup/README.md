@@ -1,5 +1,13 @@
 [![](https://images.microbadger.com/badges/image/jeckel/container-backup.svg)](https://microbadger.com/images/jeckel/container-backup "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/jeckel/container-backup.svg)](https://microbadger.com/images/jeckel/container-backup "Get your own version badge on microbadger.com") [![Twitter](https://img.shields.io/badge/Twitter-%40jeckel4-blue.svg)](https://twitter.com/intent/user?screen_name=jeckel4) [![LinkedIn](https://img.shields.io/badge/LinkedIn-Julien%20Mercier-blue.svg)](https://www.linkedin.com/in/jeckel/)
 
+# THIS DOCKERFILE IS OBSOLETE
+
+Please now consider looking at this other Dockerfiles:
+- [Volume-Backup](https://github.com/jeckel/dockerfiles/blob/master/volume-backup/) to backup volumes
+- [MySQL-Backup](https://github.com/jeckel/dockerfiles/blob/master/mysql-backup/) to backup mysql database
+
+# ---------------------------
+
 # Container Backup
 
 This image is used to backup data from your container in a scheduled period.
