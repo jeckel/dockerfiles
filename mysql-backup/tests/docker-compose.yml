@@ -3,18 +3,27 @@ version: "3"
 # Declare services
 services:
   mysql:
-    image: mysql:latest
+    image: mysql:5
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
     environment:
+      - MYSQL_DATABASE=employees
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=test
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
 
   backup:
-#    image: jeckel/volume-backup:latest
-    build:
-      context: ../
-      dockerfile: Dockerfile
+    image: jeckel/volume-backup:latest
+#    build:
+#      context: ../
+#      dockerfile: Dockerfile
     volumes:
       - ./backups:/var/backups
     environment:
       - TARGET_DIRECTORY=/var/backups
-      - SOURCE_DIRECTORIES=/var/source /var/tmp
-      - TAR_OPTIONS=--exclude=./tests/backups --exclude=./.* -v
       - KEEP_NB_BACKUP=3
+      - MYSQL_HOST=mysql
+      - MYSQL_DATABASE=employees
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=test
+      - DUMP_OPTIONS=--disable-keys

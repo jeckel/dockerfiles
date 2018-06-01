@@ -9,14 +9,14 @@ function backup_database() {
     local mysqlDatabase=$4
     local targetDir=$5
 
-    local target=${targetDir}/backup_db_${mysqlDatabase}._$(date +"%Y%m%d%H%M%S").sql.gz
+    local target=${targetDir}/backup_db_${mysqlDatabase}_$(date +"%Y%m%d%H%M%S").sql.gz
     local uid
     local gid
 
     cd ${targetDir}
     set -- `ls -nd .` && uid=$3 && gid=$4
 
-    mysqldump -h ${mysqlHost} -u${mysqlUser} -p${mysqlPwd} ${mysqlDatabase} | gzip > ${target}
+    mysqldump -h ${mysqlHost} -u${mysqlUser} -p${mysqlPwd} ${DUMP_OPTIONS} ${mysqlDatabase} | gzip > ${target}
     chown ${uid}:${gid} ${target}
 }
 
@@ -29,7 +29,7 @@ function backup_database() {
 function cleanup() {
     local mysqlDatabase=$1
     local targetDir=$2
-    local backupMask=${targetDir}/backup_db_${mysqlDatabase}._*.tar.gz
+    local backupMask=${targetDir}/backup_db_${mysqlDatabase}_*.sql.gz
     local keepHistory=$3
 
     # Keep only the last "$keepHistory" backups
@@ -37,3 +37,7 @@ function cleanup() {
 }
 
 backup_database ${MYSQL_HOST} ${MYSQL_USER} ${MYSQL_PASSWORD} ${MYSQL_DATABASE} ${TARGET_DIRECTORY}
+
+if [ ! -z ${KEEP_NB_BACKUP} ]; then
+    cleanup ${MYSQL_DATABASE} ${TARGET_DIRECTORY} ${KEEP_NB_BACKUP}
+fi
