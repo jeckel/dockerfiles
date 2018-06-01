@@ -1,0 +1,20 @@
+version: "3"
+
+# Declare services
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+
+  backup:
+#    image: jeckel/volume-backup:latest
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    volumes:
+      - ./backups:/var/backups
+    environment:
+      - TARGET_DIRECTORY=/var/backups
+      - SOURCE_DIRECTORIES=/var/source /var/tmp
+      - TAR_OPTIONS=--exclude=./tests/backups --exclude=./.* -v
+      - KEEP_NB_BACKUP=3
