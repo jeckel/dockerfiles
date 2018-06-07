@@ -9,6 +9,7 @@ Index of some dockerfiles. All this ones are available on [docker hub](https://h
 * **[composer](composer/)**: A composer version running as a docker application, able to write on the mounted folder using local user rights
 * **[MySQL-Backup](mysql-backup/)**: A container use to dump mysql database on a scheduled time
 * **[PHPAnalysis](phpanalysis/)**: A container full of tools to analysis PHP project quality
+* **[Sami](sami/)**: A container for Sami, a PHP API Documentation generator
 * **[Volume-Backup](volume-backup/)**: A container use to make archive backups of some volumes/folders on a scheduled time
 
 # Dockerfiles Samples
