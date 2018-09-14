@@ -14,6 +14,7 @@ RUN apk add --no-cache --update --virtual buildDeps autoconf gcc musl-dev make z
      && docker-php-ext-enable xdebug \
      && apk del buildDeps autoconf gcc musl-dev make zlib-dev
 
+
 # Install composer
 RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/863c57de1807c99d984f7b56f0ea56ebd7e5045b/web/installer -O - -q | php -- --quiet &&\
     mv composer.phar /usr/local/bin/composer && \
@@ -21,8 +22,14 @@ RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/863c57de1807
 
 # Install Laravel installer
 USER www-data
+
+ENV COMPOSER_HOME /home/www-data/.composer
+#RUN if [ ! -e ${COMPOSER_HOME} ]; then \
+#    mkdir ${COMPOSER_HOME} ; \
+#    fi
+RUN mkdir -p ${COMPOSER_HOME}
 RUN composer global require "laravel/installer"
 
 ENV PATH="/home/www-data/.composer/vendor/bin:${PATH}"
-
+RUN  chmod -R 777 ${COMPOSER_HOME}
 WORKDIR /project
